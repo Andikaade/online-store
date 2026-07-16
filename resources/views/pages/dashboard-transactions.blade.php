@@ -51,7 +51,7 @@
                       aria-labelledby="pills-home-tab"
                     >
                       <a
-                        href="/dashboard-transactions-details"
+                        href="/dashboard-transactions-details.html"
                         class="card card-list d-block"
                       >
                         <div class="card-body">
