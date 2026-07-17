@@ -12,6 +12,7 @@ use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\DashboardTransactionController;
 use App\Http\Controllers\DashboardSettingController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 
 
 
@@ -38,9 +39,10 @@ Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])
 
 // ->middleware(['auth','admin']);
 Route::prefix('admin')
-    ->namespace('Admin')
+    // ->namespace('Admin')
     ->group(function() {
         Route::get('/', [AdminDashboardController::class, 'index'])->name('admin-dashboard');
+        Route::resource('category', AdminCategoryController::class);
     });
 
 // Route::get('/', function () {

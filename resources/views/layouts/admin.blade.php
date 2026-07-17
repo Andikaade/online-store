@@ -24,8 +24,8 @@
         <!-- Sidebar -->
         <div class="border-right" id="sidebar-wrapper">
           <div class="sidebar-heading text-center">
-            <img src="/images/admin.png" alt="Store Logo" class="my-4" style="max-width: 30%"/>
-          </div>
+            <img src="/images/admin.png" alt="Store Logo" class="my-4 img-fluid" style="max-width: 120px;"/>
+        </div>
           <div class="list-group list-group-flush">
             <a href="{{route('admin-dashboard') }}" class="list-group-item list-group-item-action">
               Dashboard
@@ -33,8 +33,8 @@
             <a href="#" class="list-group-item list-group-item-action">
               Products
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
-              Categories
+            <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/category*') ? 'active' : '' }}">
+                Categories
             </a>
             <a href="#" class="list-group-item list-group-item-action">
               Transaction
