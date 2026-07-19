@@ -25,7 +25,7 @@
                         Customer
                       </div>
                       <div class="dashboard-card-subtitle">
-                        Rp{{ $customer }}
+                        {{ $customer }}
                       </div>
                     </div>
                   </div>
