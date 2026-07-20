@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\ProductGalleryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/category', [CategoryController::class, 'index'])->name('categories');
+Route::get('/category{id}', [CategoryController::class, 'detail'])->name('categories-detail');
 Route::get('/details/{id}', [DetailController::class, 'index'])->name('detail');
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/success', [SuccessController::class, 'index'])->name('success');
