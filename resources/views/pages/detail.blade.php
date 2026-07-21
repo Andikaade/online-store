@@ -6,27 +6,27 @@
 
 @section('content')
 
-    <div class="page-content page-details">
+<div class="page-content page-details">
     <section class="store-breadcrumbs" data-aos="fade-down" data-aos-delay="100">
         <div class="container">
-        <div class="row">
-            <div class="col-12">
-            <nav>
-                <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="{{ route('home') }}">Home</a>
-                </li>
-                <li class="breadcrumb-item active">
-                    Product Details
-                </li>
-                </ol>
-            </nav>
+            <div class="row">
+                <div class="col-12">
+                    <nav>
+                        <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="{{ route('home') }}">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            Product Details
+                        </li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
-        </div>
         </div>
     </section>
 
-    <section class="store-gallery" id="gallery">
+    <section class="store-gallery mb-3" id="gallery">
         <div class="container">
         <div class="row">
             <div class="col-lg-8" data-aos="zoom-in">
@@ -51,14 +51,31 @@
         <section class="store-heading">
         <div class="container">
             <div class="row">
-            <div class="col-lg-8">
-                <h1>Sofa Ternyaman</h1>
-                <div class="owner">By Annovcoer</div>
-                <div class="price">$1.409</div>
-            </div>
-            <div class="col-lg-2" data-aos="zoom-in">
-                <a href="{{ route('cart') }}" class="btn btn-success px-4 text-white btn-block mb-3">Add to cart</a> <!-- FIXED: Diubah dari /cart.html -->
-            </div>
+                <div class="col-lg-8">
+                    <h1>{{ $product->name }}</h1>
+                    <div class="owner">By {{ $product->user->store_name ?? 'unknown'}}</div>
+                    <div class="price">Rp {{ number_format($product->price) }}</div>
+                </div>
+                <div class="col-lg-2" data-aos="zoom-in">
+                    @auth
+                        <form action="{{ route('detail-add', $product->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <button
+                                type="submit"
+                                class="btn btn-success px-4 text-white btn-block mb-3"
+                            >
+                                Add to Cart
+                            </button>
+                        </form>
+                    @else
+                        <a
+                            href="{{ route('login') }}"
+                            class="btn btn-success px-4 text-white btn-block mb-3"
+                        >
+                            Sign in to Add
+                        </a>
+                    @endauth
+                </div>
             </div>
         </div>
         </section>
@@ -67,53 +84,49 @@
         <div class="container">
             <div class="row">
             <div class="col-12 col-lg-8">
-                <!-- FIXED: Deskripsi disesuaikan agar relevan dengan produk Sofa -->
-                <p>Sofa ini dirancang khusus untuk memberikan kenyamanan maksimal pada ruang tamu Anda setelah seharian beraktivitas. Menggunakan material busa premium pilihan yang empuk namun tetap kokoh, serta dibalut oleh kain fabric berkualitas tinggi yang adem dan lembut di kulit.</p>
-
-                <p>Hadir dengan desain modern minimalis yang sangat cocok dipadukan dengan berbagai konsep interior rumah masa kini. Struktur rangka bagian dalam dibuat menggunakan kayu solid yang telah melalui proses oven, menjamin daya tahan sofa ini untuk penggunaan jangka panjang bersama keluarga.</p>
-            </div>
+                {{ $product->description }}
             </div>
         </div>
         </section>
 
         <section class="store-review">
-        <div class="container">
-            <div class="row">
-            <div class="col-12 col-lg-8 mt-3 mb-3">
-                <h5>Customer Review (3)</h5> <!-- FIXED: Typo Costumer -> Customer -->
-            </div>
-            </div>
-            <div class="row">
-            <div class="col-12 col-lg-8">
-                <ul class="list-unstyled">
-                <li class="media">
-                    <img src="/images/icons-testimonial-1.png" alt="" class="mr-3 rounded-circle">
-                    <div class="media-body">
-                    <h5 class="mt-2 mb-1">Hazza Rizky</h5>
-                    I thought it was not good for living room. I really happy to decided buy this product last week now feels like homey.
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-8 mt-3 mb-3">
+                        <h5>Customer Review (3)</h5>
                     </div>
-                </li>
-                <li class="media">
-                    <img src="/images/icons-testimonial-2.png" alt="" class="mr-3 rounded-circle">
-                    <div class="media-body">
-                    <h5 class="mt-2 mb-1">Rian Hidayat</h5> <!-- FIXED: Variasi nama reviewer -->
-                    Color is great with the minimalist concept. Even I thought it was made by Cactus industry. I do really satisfied with this.
+                </div>
+                <div class="row">
+                    <div class="col-12 col-lg-8">
+                        <ul class="list-unstyled">
+                            <li class="media">
+                                <img src="/images/icons-testimonial-1.png" alt="" class="mr-3 rounded-circle">
+                                <div class="media-body">
+                                <h5 class="mt-2 mb-1">Hazza Rizky</h5>
+                                I thought it was not good for living room. I really happy to decided buy this product last week now feels like homey.
+                                </div>
+                            </li>
+                            <li class="media">
+                                <img src="/images/icons-testimonial-2.png" alt="" class="mr-3 rounded-circle">
+                                <div class="media-body">
+                                <h5 class="mt-2 mb-1">Rian Hidayat</h5> <!-- FIXED: Variasi nama reviewer -->
+                                Color is great with the minimalist concept. Even I thought it was made by Cactus industry. I do really satisfied with this.
+                                </div>
+                            </li>
+                            <li class="media">
+                                <img src="/images/icons-testimonial-3.png" alt="" class="mr-3 rounded-circle">
+                                <div class="media-body">
+                                <h5 class="mt-2 mb-1">Anisa Fitri</h5> <!-- FIXED: Variasi nama reviewer -->
+                                When I saw at first, it was really awesome to have with. Just let me know if there is another upcoming product like this.
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </li>
-                <li class="media">
-                    <img src="/images/icons-testimonial-3.png" alt="" class="mr-3 rounded-circle">
-                    <div class="media-body">
-                    <h5 class="mt-2 mb-1">Anisa Fitri</h5> <!-- FIXED: Variasi nama reviewer -->
-                    When I saw at first, it was really awesome to have with. Just let me know if there is another upcoming product like this.
-                    </div>
-                </li>
-                </ul>
+                </div>
             </div>
-            </div>
-        </div>
         </section>
     </div>
-    </div>
+</div>
 
 @endsection
 
@@ -130,22 +143,12 @@
         data: {
           activePhoto:0,
           photos:[
+            @foreach($product->galleries as $gallery)
             {
-              id:1,
-              url:"/images/product-details-1.jpg"
+                id: {{ $gallery->id }},
+                url: "{{ Storage::url($gallery->photos) }}",
             },
-            {
-              id:2,
-              url:"/images/product-details-2.png"
-            },
-            {
-              id:3,
-              url:"/images/product-details-3.jpg"
-            },
-            {
-              id:4,
-              url:"/images/product-details-4.png"
-            }
+            @endforeach
           ]
         },
         methods: {
