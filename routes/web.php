@@ -22,9 +22,13 @@ use App\Http\Controllers\Admin\ProductGalleryController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/category', [CategoryController::class, 'index'])->name('categories');
 Route::get('/category/{id}', [CategoryController::class, 'detail'])->name('categories-detail');
+
 Route::get('/details/{id}', [DetailController::class, 'index'])->name('detail');
 Route::post('/details/{id}', [DetailController::class, 'add'])->name('detail-add');
+
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart-delete');
+
 Route::get('/success', [SuccessController::class, 'index'])->name('success');
 
 Route::get('/register/success', [RegisterController::class, 'success'])->name('register-success');
