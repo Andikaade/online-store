@@ -15,6 +15,12 @@ class CartController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
         $carts = Cart::with(['product.galleries', 'user'])
             ->where('users_id', Auth::user()->id)
             ->get();
