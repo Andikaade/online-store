@@ -4,19 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model
+class TransactionDetail extends Model
 {
-    /**
+     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'users_id',
-        'inscurance_price',
-        'shipping_price',
-        'transaction_status',
-        'total_price',
+        'transactions_id',
+        'products_id',
+        'price',
+        'shipping_status',
+        'resi',
         'code'
     ];
 

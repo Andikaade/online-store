@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductGalleryController;
+use App\Http\Controllers\CheckoutController;
 
 
 
@@ -28,6 +29,10 @@ Route::post('/details/{id}', [DetailController::class, 'add'])->name('detail-add
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::delete('/cart/{id}', [CartController::class, 'delete'])->name('cart-delete');
+
+Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout');
+Route::post('/checkout/callback', [CheckoutController::class, 'callback'])->name('midtrans-callback');
+
 
 Route::get('/success', [SuccessController::class, 'index'])->name('success');
 
