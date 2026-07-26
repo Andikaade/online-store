@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DetailController;
@@ -54,6 +55,7 @@ Route::group(['middleware' => ['auth']], function(){
 
     Route::get('/dashboard/transactions', [DashboardTransactionController::class, 'index'])->name('dashboard-transactions');
     Route::get('/dashboard/transactions/{id}', [DashboardTransactionController::class, 'details'])->name('dashboard-transactions-details');
+    Route::post('/dashboard/transactions/update/{id}', [DashboardTransactionController::class, 'update'])->name('dashboard-transactions-update');
 
     Route::get('/dashboard/settings', [DashboardSettingController::class, 'store'])->name('dashboard-settings-store');
     Route::get('/dashboard/account', [DashboardSettingController::class, 'account'])->name('dashboard-settings-account');
