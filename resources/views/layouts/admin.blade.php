@@ -39,7 +39,7 @@
             <a href="{{ route('category.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/category*') ? 'active' : '' }}">
                 Categories
             </a>
-            <a href="#" class="list-group-item list-group-item-action">
+            <a href="{{ route('transaction.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/transaction*') ? 'active' : '' }}">
               Transaction
             </a>
             <a href="{{ route('user.index') }}" class="list-group-item list-group-item-action {{ request()->is('admin/user*') ? 'active' : '' }}">
