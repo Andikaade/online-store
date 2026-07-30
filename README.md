@@ -36,7 +36,6 @@ Aplikasi _e-commerce_ berbasis web yang dirancang untuk mengelola penjualan prod
 
 ## ⚙️ Cara Instalasi & Menjalankan Proyek
 
-Ikuti langkah-langkah berikut untuk menjalankan proyek ini di lingkungan lokal kamu:
 
 1. **Clone Repository**
     ```bash
